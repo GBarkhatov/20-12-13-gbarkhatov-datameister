@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { Radio } from 'antd'
+import { Radio, Card } from 'antd'
 
 import Input from './components/Input'
 import Output from './components/Output'
@@ -34,7 +34,9 @@ const ButtonsWrapper = styled.div`
   }
 `
 
-const ContentWrapper = styled.div``
+const ContentWrapper = styled(Card)`
+  background-color: #fff;
+`
 
 const App = () => {
   const [inputMode, setInputMode] = useState(true)
@@ -55,7 +57,9 @@ const App = () => {
           </Radio.Button>
         </Radio.Group>
       </ButtonsWrapper>
-      <ContentWrapper>{inputMode ? <Input /> : <Output />}</ContentWrapper>
+      <ContentWrapper bordered={false}>
+        {inputMode ? <Input /> : <Output />}
+      </ContentWrapper>
     </Component>
   )
 }
