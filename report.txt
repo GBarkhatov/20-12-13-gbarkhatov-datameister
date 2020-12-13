@@ -1,0 +1,24 @@
+1. Challenges
+  Not that much challenges except that:
+  1.1. Typescript is not defined as needed in previous screen, used JS
+  1.2. Ant is not defined as needed in previous screen. To use css frameworks fast (like material ui or antd) you need to prepare yourself a bit. Even if they have good documentation
+  1.3. Somehow my test timer went off 2 hours before, so I just stopped and started to write this report
+  1.4. There's no way you can use select on age field with 121 different items (0-120), I used input. Also, there's no way 0 can be selected but I left it as it is (0-120 as required)
+  1.5. Countries -> Cities should be prepared before as CSV or Json, not an HTML table via the link. I've converted it manually to CSV, then to JSON
+2. Points for improvement
+  2.1. Unit testing - I guess we don't need to test things when testing candidates with such a small app, just takes time which is not sufficient (especially with timer goes off earlier)
+  2.2. Typescript should be mentioned before because it takes more time to develop but less time to work on bigger systems
+  2.3. Filtering, ordering is another small thing to implement: https://i.imgur.com/gILoHAS.png
+  2.4. I did not att Manual CSV input but this could be done easily with the setup: https://i.imgur.com/U7kET2Y.png
+  2.5. I did not implement form testing (age > 120, or email being email)
+  2.6. User name is not obvious for user. It should be splitte to 2 inputs - first name and last name. I suggested that user inputs Last then First, then I split this string in Output. No check for errors
+3. Self evaluation
+  3.1. Requirements - 8/10 - depending on how much you put inside testing and Typescript
+  3.2. Designs - 10/10
+  3.3. Key results - 8/10 - see 3.1
+4. Screenshots:
+  4.1. Initial state of the app without any data: https://i.imgur.com/mpGMo6C.png
+  4.2. After you fill in the form: https://i.imgur.com/O8QvgMa.png
+  4.3. Output: https://i.imgur.com/zZdnMkH.png
+5. Missing items - described above as this caterogy consists of challenges/improvement
+6. Improvements - same as 5, described above
