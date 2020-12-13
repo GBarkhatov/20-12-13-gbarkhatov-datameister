@@ -13,6 +13,17 @@ const Component = styled.div`
 const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  & > div {
+    display: flex;
+  }
+
+  & > div > label {
+    flex: 1;
+    width: 100%;
+    min-width: 10rem;
+    text-align: center;
+  }
 `
 
 const App = () => {
@@ -22,9 +33,9 @@ const App = () => {
     <Component>
       <ButtonsWrapper>
         <Radio.Group>
-          <Radio.Button value='small'>Input</Radio.Button>
+          <Radio.Button value='small'>INPUT</Radio.Button>
           <Radio.Button value='default' disabled>
-            Output
+            OUTPUT
           </Radio.Button>
         </Radio.Group>
       </ButtonsWrapper>
