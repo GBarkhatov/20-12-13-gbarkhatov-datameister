@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Typography, Row, Col, Divider } from 'antd'
+import { Typography, Row, Col, Divider, Table } from 'antd'
 
 const Component = styled.div``
 
@@ -13,7 +13,23 @@ const Capitalize = styled.p`
   text-transform: capitalize;
 `
 
-const Output = ({ name, gender, age, email, country, city }) => {
+const Output = ({ name, gender, age, email, country, city, csv }) => {
+  const columns = csv[0].map((columnName) => {
+    return {
+      title: columnName,
+      dataIndex: columnName,
+      key: columnName
+    }
+  })
+
+  const dataSource = csv.slice(1).map((item, index) => {
+    return {
+      key: index,
+      [columns[0].title]: item[0],
+      [columns[1].title]: item[1]
+    }
+  })
+
   return (
     <Component>
       <Typography.Title level={4}>Personal Information</Typography.Title>
@@ -78,6 +94,7 @@ const Output = ({ name, gender, age, email, country, city }) => {
       <Row gutter={[16, 16]}>
         <Col xs={24} md={12}>
           <Typography.Title level={4}>Data</Typography.Title>
+          <Table dataSource={dataSource} columns={columns} />
         </Col>
         <Col xs={24} md={12}>
           <Typography.Title level={4}>Graph</Typography.Title>

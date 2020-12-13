@@ -145,6 +145,7 @@ const App = () => {
           email={email}
           country={country}
           city={city}
+          csv={csv}
         />
       )
     }
