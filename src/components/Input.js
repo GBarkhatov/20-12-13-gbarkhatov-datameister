@@ -22,12 +22,12 @@ const Input = () => {
           </Select>
         </Col>
         <Col xs={24} sm={5}>
-          <AntInput placeholder='Age' />
+          <AntInput placeholder='Age' type='number' min={0} max={120} />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
-          <AntInput placeholder='Email' type='number' />
+          <AntInput placeholder='Email' />
         </Col>
         <Col xs={24} sm={5}>
           <Select style={{ width: '100%' }} placeholder='Country'>
