@@ -113,7 +113,7 @@ const Output = ({ name, gender, age, email, country, city, csv }) => {
               padding={0.3}
               valueScale={{ type: 'linear' }}
               indexScale={{ type: 'band', round: true }}
-              colors={{ scheme: 'nivo' }}
+              colors={{ scheme: 'category10' }}
               defs={[
                 {
                   id: 'dots',
