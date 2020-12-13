@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Typography, Row, Col, Input as AntInput, Select } from 'antd'
 
@@ -7,6 +7,24 @@ import countriesWithCities from '../data/countriesWithCities'
 const Component = styled.div``
 
 const Input = () => {
+  const [country, setCountry] = useState('')
+
+  const handleCountryChange = (value) => {
+    setCountry(value)
+  }
+
+  const getCities = () => {
+    const { cities } = countriesWithCities.filter(
+      (item) => item.name === country
+    )[0]
+
+    return cities.map((city) => (
+      <Select.Option value={city} key={city}>
+        {city}
+      </Select.Option>
+    ))
+  }
+
   return (
     <Component>
       <Typography.Title level={4}>User</Typography.Title>
@@ -30,7 +48,11 @@ const Input = () => {
           <AntInput placeholder='Email' />
         </Col>
         <Col xs={24} sm={5}>
-          <Select style={{ width: '100%' }} placeholder='Country'>
+          <Select
+            style={{ width: '100%' }}
+            placeholder='Country'
+            onChange={handleCountryChange}
+          >
             {countriesWithCities.map((item) => (
               <Select.Option value={item.name} key={item.name}>
                 {item.name}
@@ -39,7 +61,13 @@ const Input = () => {
           </Select>
         </Col>
         <Col xs={24} sm={5}>
-          City
+          <Select
+            style={{ width: '100%' }}
+            placeholder='City'
+            disabled={!country}
+          >
+            {country && getCities()}
+          </Select>
         </Col>
       </Row>
     </Component>
