@@ -50,7 +50,7 @@ const App = () => {
           <Radio.Button value='small' onClick={toggleInput(true)}>
             INPUT
           </Radio.Button>
-          <Radio.Button value='default' onClick={toggleInput(false)}>
+          <Radio.Button value='default' onClick={toggleInput(false)} disabled>
             OUTPUT
           </Radio.Button>
         </Radio.Group>
