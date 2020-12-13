@@ -88,7 +88,6 @@ const App = () => {
           setCountry={setCountry}
           city={city}
           setCity={setCity}
-          csv={csv}
           setCsv={setCsv}
           onInputChange={handleInputChange}
           filled={filled}

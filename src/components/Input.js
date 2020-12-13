@@ -29,7 +29,6 @@ const Input = ({
   setCountry,
   city,
   setCity,
-  csv,
   setCsv,
   onInputChange,
   filled
@@ -43,8 +42,6 @@ const Input = ({
     data.slice(1).forEach((element) => {
       result.push(element.data)
     })
-
-    console.log(JSON.stringify(result, null, 2))
 
     setCsv(result)
   }
