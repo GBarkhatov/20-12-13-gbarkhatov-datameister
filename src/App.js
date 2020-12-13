@@ -40,7 +40,7 @@ const ContentWrapper = styled(Card)`
 
 const App = () => {
   // mode:
-  const [inputMode, setInputMode] = useState(true)
+  const [mode, setMode] = useState('input')
   // input fields:
   // const [name, setName] = useState('')
   // const [gender, setGender] = useState('')
@@ -91,11 +91,11 @@ const App = () => {
   ])
 
   const toggleInput = (mode) => () => {
-    setInputMode(mode)
+    setMode(mode)
   }
 
   const handleContinue = () => {
-    setInputMode(false)
+    setMode('output')
   }
 
   const handleInputChange = (setter) => (e) => {
@@ -109,7 +109,7 @@ const App = () => {
   }
 
   const renderContent = () => {
-    if (inputMode) {
+    if (mode === 'input') {
       return (
         <Input
           onContinue={handleContinue}
@@ -138,11 +138,15 @@ const App = () => {
   return (
     <Component>
       <ButtonsWrapper>
-        <Radio.Group>
-          <Radio.Button value='small' onClick={toggleInput(true)}>
+        <Radio.Group value={mode}>
+          <Radio.Button onClick={toggleInput('input')} value='input'>
             INPUT
           </Radio.Button>
-          <Radio.Button value='default' onClick={toggleInput(false)} disabled>
+          <Radio.Button
+            onClick={toggleInput('output')}
+            value='output'
+            disabled={mode === 'input'}
+          >
             OUTPUT
           </Radio.Button>
         </Radio.Group>
