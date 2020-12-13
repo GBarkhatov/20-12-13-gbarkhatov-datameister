@@ -10,11 +10,22 @@ const Component = styled.div``
 const CSVWrapper = styled.div``
 
 const Input = () => {
+  const [name, setName] = useState('')
+  const [gender, setGender] = useState('')
+  const [age, setAge] = useState()
+  const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
+  const [city, setCity] = useState('')
   const [csv, setCsv] = useState([])
 
-  const handleCountryChange = (value) => {
-    setCountry(value)
+  const handleChange = (setter) => (e) => {
+    if (typeof e === 'string') {
+      // using select
+      setter(e)
+    } else {
+      // using input
+      setter(e.target.value)
+    }
   }
 
   const handleOnDrop = (data) => {
@@ -51,28 +62,43 @@ const Input = () => {
       <Typography.Title level={4}>User</Typography.Title>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
-          <AntInput placeholder='Name' />
+          <AntInput
+            placeholder='Name'
+            value={name}
+            onChange={handleChange(setName)}
+          />
         </Col>
         <Col xs={24} sm={5}>
-          <Select style={{ width: '100%' }} placeholder='Gender'>
+          <Select
+            style={{ width: '100%' }}
+            placeholder='Gender'
+            onChange={handleChange(setGender)}
+          >
             <Select.Option value='male'>Male</Select.Option>
             <Select.Option value='female'>Female</Select.Option>
             <Select.Option value='unspecified'>Unspecified</Select.Option>
           </Select>
         </Col>
         <Col xs={24} sm={5}>
-          <AntInput placeholder='Age' type='number' min={0} max={120} />
+          <AntInput
+            placeholder='Age'
+            type='number'
+            value={age}
+            min={0}
+            max={120}
+            onChange={handleChange(setAge)}
+          />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
-          <AntInput placeholder='Email' />
+          <AntInput placeholder='Email' onChange={handleChange(setEmail)} value={email} />
         </Col>
         <Col xs={24} sm={5}>
           <Select
             style={{ width: '100%' }}
             placeholder='Country'
-            onChange={handleCountryChange}
+            onChange={handleChange(setCountry)}
           >
             {countriesWithCities.map((item) => (
               <Select.Option value={item.name} key={item.name}>
@@ -86,6 +112,7 @@ const Input = () => {
             style={{ width: '100%' }}
             placeholder='City'
             disabled={!country}
+            onChange={handleChange(setCity)}
           >
             {country && getCities()}
           </Select>
