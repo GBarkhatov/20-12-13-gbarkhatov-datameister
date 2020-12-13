@@ -81,6 +81,7 @@ const Input = ({
             style={{ width: '100%' }}
             placeholder='Gender'
             onChange={onInputChange(setGender)}
+            value={gender || null}
           >
             <Select.Option value='male'>Male</Select.Option>
             <Select.Option value='female'>Female</Select.Option>
@@ -111,6 +112,7 @@ const Input = ({
             style={{ width: '100%' }}
             placeholder='Country'
             onChange={onInputChange(setCountry)}
+            value={country || null}
           >
             {countriesWithCities.map((item) => (
               <Select.Option value={item.name} key={item.name}>
@@ -125,6 +127,7 @@ const Input = ({
             placeholder='City'
             disabled={!country}
             onChange={onInputChange(setCity)}
+            value={city || null}
           >
             {country && getCities()}
           </Select>

@@ -42,12 +42,20 @@ const App = () => {
   // mode:
   const [inputMode, setInputMode] = useState(true)
   // input fields:
-  const [name, setName] = useState('')
-  const [gender, setGender] = useState('')
-  const [age, setAge] = useState()
-  const [email, setEmail] = useState('')
-  const [country, setCountry] = useState('')
-  const [city, setCity] = useState('')
+  // const [name, setName] = useState('')
+  // const [gender, setGender] = useState('')
+  // const [age, setAge] = useState()
+  // const [email, setEmail] = useState('')
+  // const [country, setCountry] = useState('')
+  // const [city, setCity] = useState('')
+  // const [csv, setCsv] = useState([])
+  // TODO revert
+  const [name, setName] = useState('Barkhatov Govard')
+  const [gender, setGender] = useState('male')
+  const [age, setAge] = useState(29)
+  const [email, setEmail] = useState('gbarkhatov@gmail.com')
+  const [country, setCountry] = useState('Russia')
+  const [city, setCity] = useState('Vladivostok')
   const [csv, setCsv] = useState([])
 
   const toggleInput = (mode) => () => {
