@@ -15,25 +15,24 @@ const ButtonWrapper = styled.div`
   margin-top: 1rem;
 `
 
-const Input = ({ onContinue }) => {
-  const [name, setName] = useState('')
-  const [gender, setGender] = useState('')
-  const [age, setAge] = useState()
-  const [email, setEmail] = useState('')
-  const [country, setCountry] = useState('')
-  const [city, setCity] = useState('')
-  const [csv, setCsv] = useState([])
-
-  const handleChange = (setter) => (e) => {
-    if (typeof e === 'string') {
-      // using select
-      setter(e)
-    } else {
-      // using input
-      setter(e.target.value)
-    }
-  }
-
+const Input = ({
+  onContinue,
+  name,
+  setName,
+  gender,
+  setGender,
+  age,
+  setAge,
+  email,
+  setEmail,
+  country,
+  setCountry,
+  city,
+  setCity,
+  csv,
+  setCsv,
+  onInputChange
+}) => {
   const handleOnDrop = (data) => {
     const result = []
 
@@ -74,14 +73,14 @@ const Input = ({ onContinue }) => {
           <AntInput
             placeholder='Name'
             value={name}
-            onChange={handleChange(setName)}
+            onChange={onInputChange(setName)}
           />
         </Col>
         <Col xs={24} sm={5}>
           <Select
             style={{ width: '100%' }}
             placeholder='Gender'
-            onChange={handleChange(setGender)}
+            onChange={onInputChange(setGender)}
           >
             <Select.Option value='male'>Male</Select.Option>
             <Select.Option value='female'>Female</Select.Option>
@@ -95,7 +94,7 @@ const Input = ({ onContinue }) => {
             value={age}
             min={0}
             max={120}
-            onChange={handleChange(setAge)}
+            onChange={onInputChange(setAge)}
           />
         </Col>
       </Row>
@@ -103,7 +102,7 @@ const Input = ({ onContinue }) => {
         <Col xs={24} sm={14}>
           <AntInput
             placeholder='Email'
-            onChange={handleChange(setEmail)}
+            onChange={onInputChange(setEmail)}
             value={email}
           />
         </Col>
@@ -111,7 +110,7 @@ const Input = ({ onContinue }) => {
           <Select
             style={{ width: '100%' }}
             placeholder='Country'
-            onChange={handleChange(setCountry)}
+            onChange={onInputChange(setCountry)}
           >
             {countriesWithCities.map((item) => (
               <Select.Option value={item.name} key={item.name}>
@@ -125,7 +124,7 @@ const Input = ({ onContinue }) => {
             style={{ width: '100%' }}
             placeholder='City'
             disabled={!country}
-            onChange={handleChange(setCity)}
+            onChange={onInputChange(setCity)}
           >
             {country && getCities()}
           </Select>
@@ -148,7 +147,7 @@ const Input = ({ onContinue }) => {
         <Button
           type='primary'
           disabled={!filled}
-          onClick={onContinue([name, gender, age, email, country, city, csv])}
+          onClick={onContinue}
         >
           Continue
         </Button>

@@ -39,17 +39,60 @@ const ContentWrapper = styled(Card)`
 `
 
 const App = () => {
+  // mode:
   const [inputMode, setInputMode] = useState(true)
+  // input fields:
+  const [name, setName] = useState('')
+  const [gender, setGender] = useState('')
+  const [age, setAge] = useState()
+  const [email, setEmail] = useState('')
+  const [country, setCountry] = useState('')
+  const [city, setCity] = useState('')
+  const [csv, setCsv] = useState([])
 
   const toggleInput = (mode) => () => {
     setInputMode(mode)
   }
 
-  const handleContinue = data => () => {
-    const [name, gender, age, email, country, city, csv] = [...data]
-    console.log(name)
-    console.log(csv)
+  const handleContinue = () => {
     setInputMode(false)
+  }
+
+  const handleInputChange = (setter) => (e) => {
+    if (typeof e === 'string') {
+      // using select
+      setter(e)
+    } else {
+      // using input
+      setter(e.target.value)
+    }
+  }
+
+  const renderContent = () => {
+    if (inputMode) {
+      return (
+        <Input
+          onContinue={handleContinue}
+          name={name}
+          setName={setName}
+          gender={gender}
+          setGender={setGender}
+          age={age}
+          setAge={setAge}
+          email={email}
+          setEmail={setEmail}
+          country={country}
+          setCountry={setCountry}
+          city={city}
+          setCity={setCity}
+          csv={csv}
+          setCsv={setCsv}
+          onInputChange={handleInputChange}
+        />
+      )
+    } else {
+      return <Output />
+    }
   }
 
   return (
@@ -64,9 +107,7 @@ const App = () => {
           </Radio.Button>
         </Radio.Group>
       </ButtonsWrapper>
-      <ContentWrapper bordered={false}>
-        {inputMode ? <Input onContinue={handleContinue} /> : <Output />}
-      </ContentWrapper>
+      <ContentWrapper bordered={false}>{renderContent()}</ContentWrapper>
     </Component>
   )
 }
