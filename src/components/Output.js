@@ -109,7 +109,7 @@ const Output = ({ name, gender, age, email, country, city, csv }) => {
               data={dataSource}
               keys={[columns[1].title]}
               indexBy={columns[0].title}
-              margin={{ top: 50, right: 50, bottom: 100, left: 60 }}
+              margin={{ top: 50, right: 20, bottom: 100, left: 60 }}
               padding={0.3}
               valueScale={{ type: 'linear' }}
               indexScale={{ type: 'band', round: true }}
