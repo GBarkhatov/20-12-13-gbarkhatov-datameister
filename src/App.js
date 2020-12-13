@@ -56,7 +56,39 @@ const App = () => {
   const [email, setEmail] = useState('gbarkhatov@gmail.com')
   const [country, setCountry] = useState('Russia')
   const [city, setCity] = useState('Vladivostok')
-  const [csv, setCsv] = useState([])
+  const [csv, setCsv] = useState([
+    ['Product', 'Price'],
+    ['Paper', 5],
+    ['Card', 2],
+    ['Pencil', 0.5],
+    ['Pen', 0.75],
+    ['Globe', 25],
+    ['Wall clock', 7.5],
+    ['Stapler', 3],
+    ['Staples', 0.5],
+    ['Brush', 1],
+    ['Colour pencils', 7],
+    ['Eraser', 0.25],
+    ['Push-pin', 0.1],
+    ['Paper clip', 0.5],
+    ['Rubber stamp', 1.2],
+    ['Highlighter', 0.75],
+    ['Fountain pen', 10],
+    ['Marker', 2.5],
+    ['Ballpoint', 1.35],
+    ['Bulldog clip', 0.1],
+    ['Tape dispenser', 1.25],
+    ['Pencil sharpener', 1.35],
+    ['Label', 0.1],
+    ['Calculator', 15],
+    ['Glue', 3.5],
+    ['Scissors', 5.5],
+    ['Sticky notes', 2.25],
+    ['Envelope', 1.3],
+    ['Clipboard', 5],
+    ['Folder', 3],
+    ['Wastebasket', 12]
+  ])
 
   const toggleInput = (mode) => () => {
     setInputMode(mode)

@@ -43,6 +43,8 @@ const Input = ({
       result.push(element.data)
     })
 
+    console.log(JSON.stringify(result, null, 2))
+
     setCsv(result)
   }
 
