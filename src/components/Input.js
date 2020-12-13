@@ -31,7 +31,8 @@ const Input = ({
   setCity,
   csv,
   setCsv,
-  onInputChange
+  onInputChange,
+  filled
 }) => {
   const handleOnDrop = (data) => {
     const result = []
@@ -63,9 +64,6 @@ const Input = ({
       </Select.Option>
     ))
   }
-
-  const filled =
-    name && gender && age && email && country && city && csv.length > 0
 
   return (
     <Component>

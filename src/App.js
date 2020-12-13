@@ -92,6 +92,9 @@ const App = () => {
     ['Wastebasket', 12]
   ])
 
+  const filled =
+    name && gender && age && email && country && city && csv.length > 0
+
   const toggleInput = (mode) => () => {
     setMode(mode)
   }
@@ -130,10 +133,20 @@ const App = () => {
           csv={csv}
           setCsv={setCsv}
           onInputChange={handleInputChange}
+          filled={filled}
         />
       )
     } else {
-      return <Output />
+      return (
+        <Output
+          name={name}
+          gender={gender}
+          age={age}
+          email={email}
+          country={country}
+          city={city}
+        />
+      )
     }
   }
 
@@ -147,7 +160,7 @@ const App = () => {
           <Radio.Button
             onClick={toggleInput('output')}
             value='output'
-            disabled={mode === 'input'}
+            disabled={!filled && mode === 'input'}
           >
             OUTPUT
           </Radio.Button>

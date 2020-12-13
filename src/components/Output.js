@@ -1,95 +1,72 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Typography, Row, Col, Input as AntInput, Select, Button } from 'antd'
-import { CSVReader } from 'react-papaparse'
-
-import countriesWithCities from '../data/countriesWithCities'
+import { Typography, Row, Col } from 'antd'
 
 const Component = styled.div``
 
-const CSVWrapper = styled.div``
-
-const ButtonWrapper = styled.div`
+const ColWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+  justify-content: space-between;
 `
 
-const Output = ({
-  onContinue,
-  name,
-  setName,
-  gender,
-  setGender,
-  age,
-  setAge,
-  email,
-  setEmail,
-  country,
-  setCountry,
-  city,
-  setCity,
-  csv,
-  setCsv,
-  onInputChange
-}) => {
-  const handleOnDrop = (data) => {
-    const result = []
+const Capitalize = styled.p`
+  text-transform: capitalize;
+`
 
-    // header
-    result.push(data[0].data)
-    // elements
-    data.slice(1).forEach((element) => {
-      result.push(element.data)
-    })
-
-    console.log(JSON.stringify(result, null, 2))
-
-    setCsv(result)
-  }
-
-  const handleOnError = (err, file, inputElem, reason) => {
-    console.log(err)
-  }
-
-  const getCities = () => {
-    const { cities } = countriesWithCities.filter(
-      (item) => item.name === country
-    )[0]
-
-    return cities.map((city) => (
-      <Select.Option value={city} key={city}>
-        {city}
-      </Select.Option>
-    ))
-  }
-
-  const filled =
-    name && gender && age && email && country && city && csv.length > 0
-
+const Output = ({ name, gender, age, email, country, city }) => {
   return (
     <Component>
       <Typography.Title level={4}>User</Typography.Title>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
-          name
+          <ColWrapper>
+            <Typography>
+              <strong>Name:</strong>
+            </Typography>{' '}
+            <p>{`${name.split(' ')[1]} ${name.split(' ')[0]}`}</p>
+          </ColWrapper>
         </Col>
         <Col xs={24} sm={5}>
-          gender
+          <ColWrapper>
+            <Typography>
+              <strong>Gender:</strong>
+            </Typography>{' '}
+            <Capitalize>{gender}</Capitalize>
+          </ColWrapper>
         </Col>
         <Col xs={24} sm={5}>
-          age
+          <ColWrapper>
+            <Typography>
+              <strong>Age:</strong>
+            </Typography>{' '}
+            <p>{age}</p>
+          </ColWrapper>
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={14}>
-          email
+        <Col xs={24} sm={14} flex=''>
+          <ColWrapper>
+            <Typography>
+              <strong>Gender:</strong>
+            </Typography>{' '}
+            <p>{email}</p>
+          </ColWrapper>
         </Col>
         <Col xs={24} sm={5}>
-          country
+          <ColWrapper>
+            <Typography>
+              <strong>Country:</strong>
+            </Typography>{' '}
+            <Capitalize>{country}</Capitalize>
+          </ColWrapper>
         </Col>
         <Col xs={24} sm={5}>
-          city
+          <ColWrapper>
+            <Typography>
+              <strong>City:</strong>
+            </Typography>{' '}
+            <Capitalize>{city}</Capitalize>
+          </ColWrapper>
         </Col>
       </Row>
     </Component>
