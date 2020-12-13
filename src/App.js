@@ -45,6 +45,13 @@ const App = () => {
     setInputMode(mode)
   }
 
+  const handleContinue = data => () => {
+    const [name, gender, age, email, country, city, csv] = [...data]
+    console.log(name)
+    console.log(csv)
+    setInputMode(false)
+  }
+
   return (
     <Component>
       <ButtonsWrapper>
@@ -58,7 +65,7 @@ const App = () => {
         </Radio.Group>
       </ButtonsWrapper>
       <ContentWrapper bordered={false}>
-        {inputMode ? <Input /> : <Output />}
+        {inputMode ? <Input onContinue={handleContinue} /> : <Output />}
       </ContentWrapper>
     </Component>
   )

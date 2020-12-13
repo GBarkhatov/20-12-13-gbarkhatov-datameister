@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { Typography, Row, Col, Input as AntInput, Select } from 'antd'
+import { Typography, Row, Col, Input as AntInput, Select, Button } from 'antd'
 import { CSVReader } from 'react-papaparse'
 
 import countriesWithCities from '../data/countriesWithCities'
@@ -9,7 +9,13 @@ const Component = styled.div``
 
 const CSVWrapper = styled.div``
 
-const Input = () => {
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+`
+
+const Input = ({ onContinue }) => {
   const [name, setName] = useState('')
   const [gender, setGender] = useState('')
   const [age, setAge] = useState()
@@ -57,6 +63,9 @@ const Input = () => {
     ))
   }
 
+  const filled =
+    name && gender && age && email && country && city && csv.length > 0
+
   return (
     <Component>
       <Typography.Title level={4}>User</Typography.Title>
@@ -92,7 +101,11 @@ const Input = () => {
       </Row>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
-          <AntInput placeholder='Email' onChange={handleChange(setEmail)} value={email} />
+          <AntInput
+            placeholder='Email'
+            onChange={handleChange(setEmail)}
+            value={email}
+          />
         </Col>
         <Col xs={24} sm={5}>
           <Select
@@ -126,10 +139,20 @@ const Input = () => {
           addRemoveButton
           removeButtonColor='#659cef'
           config={{ dynamicTyping: true }}
+          header
         >
           <span>Drop CSV file here or click to upload</span>
         </CSVReader>
       </CSVWrapper>
+      <ButtonWrapper>
+        <Button
+          type='primary'
+          disabled={!filled}
+          onClick={onContinue([name, gender, age, email, country, city, csv])}
+        >
+          Continue
+        </Button>
+      </ButtonWrapper>
     </Component>
   )
 }
