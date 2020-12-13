@@ -40,7 +40,9 @@ const ContentWrapper = styled(Card)`
 
 const App = () => {
   // mode:
-  const [mode, setMode] = useState('input')
+  // const [mode, setMode] = useState('input')
+  // TODO revert
+  const [mode, setMode] = useState('output')
   // input fields:
   // const [name, setName] = useState('')
   // const [gender, setGender] = useState('')
