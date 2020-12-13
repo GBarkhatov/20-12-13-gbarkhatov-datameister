@@ -16,18 +16,16 @@ const Input = () => {
           <Select style={{ width: '100%' }} placeholder='Gender'>
             <Select.Option value='male'>Male</Select.Option>
             <Select.Option value='female'>Female</Select.Option>
-            <Select.Option value='unspecified' disabled>
-              Unspecified
-            </Select.Option>
+            <Select.Option value='unspecified'>Unspecified</Select.Option>
           </Select>
         </Col>
         <Col xs={24} sm={5}>
-          Age
+          <AntInput placeholder='Age' />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
-          <AntInput placeholder='Email' />
+          <AntInput placeholder='Email' type='number' />
         </Col>
         <Col xs={24} sm={5}>
           Country
