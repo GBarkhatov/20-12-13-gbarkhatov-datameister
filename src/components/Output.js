@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Typography, Row, Col } from 'antd'
+import { Typography, Row, Col, Divider } from 'antd'
 
 const Component = styled.div``
 
@@ -16,7 +16,7 @@ const Capitalize = styled.p`
 const Output = ({ name, gender, age, email, country, city }) => {
   return (
     <Component>
-      <Typography.Title level={4}>User</Typography.Title>
+      <Typography.Title level={4}>Personal Information</Typography.Title>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={14}>
           <ColWrapper>
@@ -25,6 +25,7 @@ const Output = ({ name, gender, age, email, country, city }) => {
             </Typography>{' '}
             <p>{`${name.split(' ')[1]} ${name.split(' ')[0]}`}</p>
           </ColWrapper>
+          <Divider />
         </Col>
         <Col xs={24} sm={5}>
           <ColWrapper>
@@ -33,6 +34,7 @@ const Output = ({ name, gender, age, email, country, city }) => {
             </Typography>{' '}
             <Capitalize>{gender}</Capitalize>
           </ColWrapper>
+          <Divider />
         </Col>
         <Col xs={24} sm={5}>
           <ColWrapper>
@@ -41,6 +43,7 @@ const Output = ({ name, gender, age, email, country, city }) => {
             </Typography>{' '}
             <p>{age}</p>
           </ColWrapper>
+          <Divider />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
@@ -51,6 +54,7 @@ const Output = ({ name, gender, age, email, country, city }) => {
             </Typography>{' '}
             <p>{email}</p>
           </ColWrapper>
+          <Divider />
         </Col>
         <Col xs={24} sm={5}>
           <ColWrapper>
@@ -59,6 +63,7 @@ const Output = ({ name, gender, age, email, country, city }) => {
             </Typography>{' '}
             <Capitalize>{country}</Capitalize>
           </ColWrapper>
+          <Divider />
         </Col>
         <Col xs={24} sm={5}>
           <ColWrapper>
@@ -67,6 +72,15 @@ const Output = ({ name, gender, age, email, country, city }) => {
             </Typography>{' '}
             <Capitalize>{city}</Capitalize>
           </ColWrapper>
+          <Divider />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} md={12}>
+          <Typography.Title level={4}>Data</Typography.Title>
+        </Col>
+        <Col xs={24} md={12}>
+          <Typography.Title level={4}>Graph</Typography.Title>
         </Col>
       </Row>
     </Component>
