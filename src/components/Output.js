@@ -168,7 +168,7 @@ const Output = ({ name, gender, age, email, country, city, csv }) => {
               }}
               labelSkipWidth={12}
               labelSkipHeight={12}
-              labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+              labelTextColor={{ from: 'color', modifiers: [['brighter', 2]] }}
               animate
               motionStiffness={90}
               motionDamping={15}
