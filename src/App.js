@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 
 const Component = styled.div``
 
-const App = () => (
-  <Component>
-    Inside App
-  </Component>
-)
+const App = () => {
+  const [inputMode, setInputMode] = useState(true)
+
+  return (
+    <Component>
+      Inside App
+    </Component>
+  )
+}
 
 export default App
