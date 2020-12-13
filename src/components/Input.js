@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Typography, Row, Col, Input as AntInput, Select } from 'antd'
 
+import countriesWithCities from '../data/countriesWithCities'
+
 const Component = styled.div``
 
 const Input = () => {
@@ -28,7 +30,13 @@ const Input = () => {
           <AntInput placeholder='Email' type='number' />
         </Col>
         <Col xs={24} sm={5}>
-          Country
+          <Select style={{ width: '100%' }} placeholder='Country'>
+            {countriesWithCities.map((item) => (
+              <Select.Option value={item.name} key={item.name}>
+                {item.name}
+              </Select.Option>
+            ))}
+          </Select>
         </Col>
         <Col xs={24} sm={5}>
           City
